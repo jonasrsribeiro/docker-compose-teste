@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  node_autenticador:
+    build: .
+    image: node_autenticador
+    container_name: container_node_autenticador
+    ports:
+      - "5000:5000"
+    networks:
+      rede_microsservicos:
+        ipv4_address: 172.18.0.3
+
+networks:
+  rede_microsservicos:
+    external: true

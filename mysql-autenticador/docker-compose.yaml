@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  mysql:
+    build: .
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: yourpassword
+      MYSQL_DATABASE: database
+      MYSQL_USER: username
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      rede_microsservicos:
+        ipv4_address: 172.18.0.2
+
+networks:
+  rede_microsservicos:
+    external: true

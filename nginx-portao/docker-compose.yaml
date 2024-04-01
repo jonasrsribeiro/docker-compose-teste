@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  nginx:
+    build: .
+    image: nginx
+    container_name: container_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - react_volume:/usr/src/app/build
+    networks:
+      rede_microsservicos:
+        ipv4_address: 172.18.0.5
+
+volumes:
+   react_volume:
+
+networks:
+  rede_microsservicos:
+    external: true
